@@ -3,6 +3,7 @@ import java.util.Map;
 
 /**
  * Created by liuyang on 16/8/18.
+ * Two Sum
  * 备注:一趟查询,最优解,时间复杂度O(n)
  */
 public class TwoSum {
