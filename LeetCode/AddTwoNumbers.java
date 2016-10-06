@@ -1,8 +1,16 @@
-import java.util.LinkedList;
 
 /**
- * Created by liuyang on 16/8/20.
- * Add Two Numbers
+ * 【工程】: LeetCode 包名: PACKAGE_NAME 类名: Add Two Numbers
+ * 【作者】: liuyang
+ * 【时间】: 16/10/6 上午9:48
+ * 【题目】: Add Two Numbers
+ * 【内容】:
+ * 【版本】: V1.0
+ * 【运行时间】:
+ * 【时间复杂度】:
+ * 【空间复杂度】:
+ * 【备注】:
+ * 【思路】:
  */
 public class AddTwoNumbers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
