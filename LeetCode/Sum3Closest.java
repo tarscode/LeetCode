@@ -22,7 +22,6 @@ public class Sum3Closest {
         int res = Math.abs(nums[0] + nums[1] + nums[2]);
         Arrays.sort(nums);
         for (int i = 0; i < nums.length - 2; i++) {
-
             int l = i + 1, r = nums.length - 1, sum = target - nums[i];
             while (l < r) {
                 if (sum == nums[l] + nums[r]) {
@@ -36,7 +35,6 @@ public class Sum3Closest {
                     l++;
                 }
             }
-
         }
         return res;
     }
