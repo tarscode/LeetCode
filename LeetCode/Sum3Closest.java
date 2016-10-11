@@ -1,4 +1,3 @@
-import java.time.chrono.MinguoChronology;
 import java.util.Arrays;
 
 /**
@@ -22,16 +21,17 @@ public class Sum3Closest {
         int res = Math.abs(nums[0] + nums[1] + nums[2]);
         Arrays.sort(nums);
         for (int i = 0; i < nums.length - 2; i++) {
-            int l = i + 1, r = nums.length - 1, sum = target - nums[i];
+            int l = i + 1, r = nums.length - 1;
             while (l < r) {
-                if (sum == nums[l] + nums[r]) {
+                int sum = nums[i] + nums[l] + nums[r];
+                if (sum == target) {
                     res = target;
                     break;
-                } else if (sum < nums[l] + nums[r]) {
-                    res = Math.abs(res - target) >= Math.abs(nums[i] + nums[l] + nums[r] - target) ? nums[i] + nums[l] + nums[r] : res;
+                } else if (sum > target) {
+                    res = Math.abs(res - target) >= Math.abs(sum - target) ? sum : res;
                     r--;
                 } else {
-                    res = Math.abs(res - target) >= Math.abs(nums[i] + nums[l] + nums[r] - target) ? nums[i] + nums[l] + nums[r] : res;
+                    res = Math.abs(res - target) >= Math.abs(sum - target) ? sum : res;
                     l++;
                 }
             }
