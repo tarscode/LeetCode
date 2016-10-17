@@ -2,7 +2,7 @@
  * 【工程】: LeetCode 包名: PACKAGE_NAME 类名: SearchInRotatedSortedArray
  * 【作者】: liuyang
  * 【时间】: 16/10/16 下午12:21
- * 【题目】: Search in Rotated Sorted Array(选择有序数组中的查找)
+ * 【题目】: Search in Rotated Sorted Array(旋转有序数组中的查找)
  * 【内容】:
  * 【版本】: V1.0
  * 【运行时间】:
