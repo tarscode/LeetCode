@@ -16,6 +16,36 @@ public class RemoveDuplicatesfromSortedList2 {
         if (head == null) {
             return head;
         }
+        ListNode head2 = new ListNode(-100);
+        head2.next = head;
+        ListNode node = head2;
+        ListNode pre = head2;
+        ListNode cur = pre.next;
+        while (cur != null) {
+            if (cur.next == null) {
+                if (cur.val == pre.val) {
+                    node.next = null;
+                } else {
+                    node.next = cur;
+                    node = node.next;
+                }
+            } else {
+                if (cur.val != pre.val && cur.val != cur.next.val) {
+                    node.next = cur;
+                    node = node.next;
+                } else {
+                }
+            }
+            pre = pre.next;
+            cur = cur.next;
+        }
+        return head2.next;
+    }
+    /*
+    public ListNode deleteDuplicates(ListNode head) {
+        if (head == null) {
+            return head;
+        }
         ListNode head2 = new ListNode(-1);
         head2.next = head;
         ListNode pre = head2;//pre为上一个节点
@@ -33,11 +63,14 @@ public class RemoveDuplicatesfromSortedList2 {
         }
         return head2.next;
     }
+    */
 
     public static void main(String[] args) {
         ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(2);
         node1.next = node2;
+        node2.next = node3;
         RemoveDuplicatesfromSortedList2 t = new RemoveDuplicatesfromSortedList2();
         printListNode(t.deleteDuplicates(node1));
         System.out.println();
