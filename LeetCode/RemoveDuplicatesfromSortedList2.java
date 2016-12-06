@@ -20,9 +20,9 @@ public class RemoveDuplicatesfromSortedList2 {
         //创建虚拟头结点head2，处理原头节点非法的情况
         ListNode head2 = new ListNode(head.val-1);
         head2.next = head;
-        ListNode node = head2;
-        ListNode pre = head2;
-        ListNode cur = pre.next;
+        ListNode node = head2;//node为合法节点
+        ListNode pre = head2;//pre为当前节点cur的前驱
+        ListNode cur = pre.next;//cur为当前遍历的节点
         while (cur != null) {
             //cur为最后一个节点时，若cur与pre值相等，则cur无效
             if (cur.next == null && cur.val == pre.val){
