@@ -46,10 +46,10 @@ public class RemoveDuplicatesfromSortedList2 {
         if (head == null) {
             return head;
         }
-        ListNode head2 = new ListNode(-1);
+        ListNode head2 = new ListNode(head.val-1);
         head2.next = head;
-        ListNode pre = head2;//pre为上一个节点
-        ListNode cur = pre.next;//cur为当前节点
+        ListNode pre = head2;//pre为上一个不重复的节点
+        ListNode cur = pre.next;//cur为当前遍历的节点
         while (cur != null) {
             while (cur.next != null && cur.val == cur.next.val) {
                 cur = cur.next;
