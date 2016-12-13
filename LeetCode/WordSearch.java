@@ -6,11 +6,11 @@ import java.util.Arrays;
  * 【时间】: 16/12/12 下午10:14
  * 【题目】: Word Search(单词搜索)
  * 【内容】: 给定一个2维数组和一个单词,其中数组的元素是字母,查找表格中是否有这个单词。
- * 【版本】: V1.0
+ * 【版本】: V1.1
  * 【运行时间】:
  * 【时间复杂度】:
  * 【空间复杂度】:
- * 【备注】:
+ * 【备注】: 回溯法
  * 【思路】:
  */
 public class WordSearch {
@@ -31,20 +31,12 @@ public class WordSearch {
     }
 
     public boolean hasWord(char[][] board, int i, int j, int[][] flag, char[] arr, int k) {
-        //数组越界
-        if (i > board.length - 1 || i < 0 || j > board[0].length - 1 || j < 0) {
+        //数组越界、元素值不等、元素被访问过
+        if (i > board.length - 1 || i < 0 || j > board[0].length - 1 || j < 0 || board[i][j] != arr[k] || flag[i][j] == 1) {
             return false;
         }
-        //当前值不等于字母中的元素
-        if(board[i][j]!=arr[k]){
-            return false;
-        }
-        //判断当前元素是否被访问过
-        if (flag[i][j] == 1) {
-            return false;
-        } else {
-            flag[i][j] = 1;
-        }
+        //标记当前访问元素
+        flag[i][j] = 1;
         //全部字母找到
         if (board[i][j] == arr[k] && k == arr.length - 1) {
             return true;
