@@ -1,4 +1,3 @@
-import java.util.Arrays;
 
 /**
  * 【工程】: LeetCode 包名: PACKAGE_NAME 类名: WordSearch
@@ -6,23 +5,19 @@ import java.util.Arrays;
  * 【时间】: 16/12/12 下午10:14
  * 【题目】: Word Search(单词搜索)
  * 【内容】: 给定一个2维数组和一个单词,其中数组的元素是字母,查找表格中是否有这个单词。
- * 【版本】: V1.1
+ * 【版本】: V2.0
  * 【运行时间】:
  * 【时间复杂度】:O(n2)
- * 【空间复杂度】:O(n)
+ * 【空间复杂度】:O(1)
  * 【备注】: 回溯法
- * 【思路】:
+ * 【思路】: 用一个变量记录当前的值
  */
 public class WordSearch {
     public boolean exist(char[][] board, String word) {
         char[] arr = word.toCharArray();
-        int[][] flag = new int[board.length][board[0].length];
-        for (int i = 0; i < board.length; i++) {
-            Arrays.fill(flag[i], 0);
-        }
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                if (hasWord(board, i, j, flag, arr, 0)) {
+                if (hasWord(board, i, j, arr, 0)) {
                     return true;
                 }
             }
@@ -30,23 +25,21 @@ public class WordSearch {
         return false;
     }
 
-    public boolean hasWord(char[][] board, int i, int j, int[][] flag, char[] arr, int k) {
-        //数组越界、元素值不等、元素被访问过
-        if (i > board.length - 1 || i < 0 || j > board[0].length - 1 || j < 0 || board[i][j] != arr[k] || flag[i][j] == 1) {
+    public boolean hasWord(char[][] board, int i, int j, char[] arr, int k) {
+        //全部字母找到
+        if (k == arr.length) {
+            return true;
+        }
+        //数组越界、元素值不等
+        if (i < 0 || j < 0 || i == board.length || j == board[i].length || board[i][j] != arr[k]) {
             return false;
         }
         //标记当前访问元素
-        flag[i][j] = 1;
-        //全部字母找到
-        if (board[i][j] == arr[k] && k == arr.length - 1) {
-            return true;
-        }
+        board[i][j] ^= 256;
         //部分字母找到
-        if (hasWord(board, i + 1, j, flag, arr, k + 1) || hasWord(board, i - 1, j, flag, arr, k + 1) || hasWord(board, i, j + 1, flag, arr, k + 1) || hasWord(board, i, j - 1, flag, arr, k + 1)) {
-            return true;
-        }
-        flag[i][j] = 0;
-        return false;
+        boolean res = hasWord(board, i + 1, j, arr, k + 1) || hasWord(board, i - 1, j, arr, k + 1) || hasWord(board, i, j + 1, arr, k + 1) || hasWord(board, i, j - 1, arr, k + 1);
+        board[i][j] ^= 256;
+        return res;
     }
 
     public static void main(String[] args) {
