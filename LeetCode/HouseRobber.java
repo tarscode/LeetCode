@@ -15,6 +15,21 @@
  * 对于当前变量,若cur+pre>res,则更新pre和res;否则,只更新pre=res
  */
 public class HouseRobber {
+
+    //优化代码的DP
+    public int rob(int[] nums) {
+        int pre = 0;
+        int res = 0;
+        for (int n : nums) {
+            int temp = res;
+            res = Math.max(res, pre);
+            pre = n + temp;
+        }
+        return Math.max(pre, res);
+    }
+
+    //原DP方法
+    /*
     public int rob(int[] nums) {
         int pre = 0;
         if (nums == null || nums.length == 0) {
@@ -23,8 +38,8 @@ public class HouseRobber {
         if (nums.length == 1) return nums[0];
         int res = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            int cur = pre + nums[i];
-            if (cur > res) {
+            if (nums[i] + pre > res) {
+                int cur = pre + nums[i];
                 pre = res;
                 res = cur;
             } else {
@@ -33,6 +48,7 @@ public class HouseRobber {
         }
         return res;
     }
+    */
 
     public static void main(String[] args) {
         int[] nums = {1, 4, 5, 3, 8, 2, 3, 4};
