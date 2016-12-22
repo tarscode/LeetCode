@@ -17,6 +17,7 @@
 public class HouseRobber {
 
     //优化代码的DP
+    /*
     public int rob(int[] nums) {
         int pre = 0;
         int res = 0;
@@ -27,19 +28,15 @@ public class HouseRobber {
         }
         return Math.max(pre, res);
     }
+    */
 
     //原DP方法
-    /*
     public int rob(int[] nums) {
         int pre = 0;
-        if (nums == null || nums.length == 0) {
-            return pre;
-        }
-        if (nums.length == 1) return nums[0];
-        int res = nums[0];
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] + pre > res) {
-                int cur = pre + nums[i];
+        int res = 0;
+        for (int num:nums) {
+            if (num + pre > res) {
+                int cur = pre + num;
                 pre = res;
                 res = cur;
             } else {
@@ -48,7 +45,6 @@ public class HouseRobber {
         }
         return res;
     }
-    */
 
     public static void main(String[] args) {
         int[] nums = {1, 4, 5, 3, 8, 2, 3, 4};
