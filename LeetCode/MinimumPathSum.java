@@ -10,7 +10,7 @@
  * 【空间复杂度】:O(n*m)
  * 【备注】: DP问题
  * 【思路】:
- *  生成一个M*N的矩阵dp,对于dp[i][j]代表到达位置(i,j)的路径最小值,最后返回dp矩阵的最后一个元素即可
+ * 生成一个M*N的矩阵dp,对于dp[i][j]代表到达位置(i,j)的路径最小值,最后返回dp矩阵的最后一个元素即可
  */
 public class MinimumPathSum {
     public int minPathSum(int[][] grid) {
@@ -32,7 +32,7 @@ public class MinimumPathSum {
         //生成dp矩阵
         for (int i = 1; i < row; i++) {
             for (int j = 1; j < col; j++) {
-                dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1])+grid[i][j];
+                dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
             }
         }
         return dp[row - 1][col - 1];
