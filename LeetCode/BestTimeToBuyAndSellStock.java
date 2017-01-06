@@ -13,7 +13,7 @@
  * 1.设置3个变量min、profit和max分别代表遍历至i时的最小值、当前利润、利润最大值。
  */
 public class BestTimeToBuyAndSellStock {
-    //暴力法超时
+    //方法一：暴力法超时
     /*
     public int maxProfit(int[] prices) {
         int max = 0;
@@ -26,7 +26,8 @@ public class BestTimeToBuyAndSellStock {
         return max;
     }
     */
-    //记录前面的最小值
+    //方法二：记录前面的最小值
+    /*
     public int maxProfit(int[] prices) {
         int max = 0;
         if (prices == null || prices.length == 0) {
@@ -40,7 +41,30 @@ public class BestTimeToBuyAndSellStock {
         }
         return max;
     }
+    */
+    //方法二：优化一点
+    public int maxProfit(int[] prices) {
+        int max = 0;
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < prices.length; i++) {
+            min = Math.min(min, prices[i]);
+            max = Math.max(max,prices[i]-min);
+        }
+        return max;
+    }
 
+    //方法三：连续子数组的最大和,经典问题
+    /*
+    public int maxProfit(int[] prices) {
+        int max = 0;
+        int cur = 0;
+        for(int i=1;i<prices.length;i++){
+           cur = Math.max(0,cur+prices[i]-prices[i-1]);
+           max = Math.max(max,cur);
+        }
+        return max;
+    }
+    */
     public static void main(String[] args) {
         BestTimeToBuyAndSellStock t = new BestTimeToBuyAndSellStock();
         System.out.println();
