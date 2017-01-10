@@ -20,6 +20,10 @@
  *  1.生成数组left[],left[i]表示从左至右遍历时,到第i天的收益最大值
  *  2.生成数组right[],right[j]表示从右至左遍历时,第j~n天的收益最大值
  *  3.遍历数组left、right,求得二者和最大的值即为两次交易的最大值
+ *  方法三：
+ *  LeetCode的Bug级别解法
+ *  方法四：
+ *  引出题4的解法
  */
 public class BestTimeToBuyAndSellStock3 {
     /*方法一：时间复杂度O(n2),超时
