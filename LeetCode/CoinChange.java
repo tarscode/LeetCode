@@ -32,14 +32,8 @@ public class CoinChange {
         }
         for (int i = 1; i < coins.length; i++) {
             for (int j = 1; j < amount + 1; j++) {
-                int res = -1;
-                for (int k = 0; k * coins[i] <= j; k++) {
-                    int temp = dp[i - 1][j - k * coins[i]];
-                    if (temp >= 0) {
-                        res = res == -1 ? temp + k : res;
-                        res = Math.min(res, temp + k);
-                    }
-                }
+                int res = j - coins[i] > 0 ? dp[i][j - coins[i]] : 0;
+                res += dp[i - 1][j];
                 dp[i][j] = res;
             }
         }
