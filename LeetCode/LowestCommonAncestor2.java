@@ -14,14 +14,18 @@
 public class LowestCommonAncestor2 {
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null || root == p || root == q) {
+        if (root == null || root == p || root == q) { //找到p、q或者为空
             return root;
         }
-        TreeNode left = lowestCommonAncestor(root.left, p, q);
-        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        TreeNode left = lowestCommonAncestor(root.left, p, q); //查询左子树
+        TreeNode right = lowestCommonAncestor(root.right, p, q); //查询右子树
+
+        //当前子树均没有p和q
         if (left != null && right != null) {
             return root;
         }
+
+        //left和right中不为空的为最近公共祖先
         return left != null ? left : right;
     }
 
